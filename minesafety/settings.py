@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'chartjs',
+    'widget_tweaks',
     'readings.apps.ReadingsConfig',
     'users.apps.UsersConfig',
     'alarms.apps.AlarmsConfig',
@@ -54,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LOGIN_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'minesafety.urls'
 
