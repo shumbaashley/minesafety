@@ -1,2 +1,1 @@
 # minesafety
-# minesafety
