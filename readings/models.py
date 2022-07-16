@@ -69,7 +69,7 @@ class HumidityReading(TimeStampedUUIDModel):
     def __str__(self):
         return f'Humidity Reading - {self.id}'
 
-class GasReadingData(TimeStampedUUIDModel):
+class GasReading(TimeStampedUUIDModel):
     gas = models.DecimalField(max_digits=10, decimal_places=2)
 
 
