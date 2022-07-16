@@ -11,7 +11,7 @@ from chartjs.views.lines import BaseLineChartView
 class LineChartJSONView(BaseLineChartView):
     def get_labels(self):
         """Return labels for the x-axis."""
-        return [obj.created for obj in ReadingData.objects.all()]
+        return [obj.created for obj in ReadingData.objects.all()][:10] 
 
     def get_providers(self):
         """Return names of datasets."""
@@ -20,7 +20,7 @@ class LineChartJSONView(BaseLineChartView):
     def get_data(self):
         """Return 3 datasets to plot."""
 
-        return [[obj.temperature for obj in ReadingData.objects.all()],[obj.humidity for obj in ReadingData.objects.all()], [obj.gas for obj in ReadingData.objects.all()]]
+        return [[obj.temperature for obj in ReadingData.objects.all()][:10] ,[obj.humidity for obj in ReadingData.objects.all()][:10] , [obj.gas for obj in ReadingData.objects.all()][:10] ]
 
 
 
