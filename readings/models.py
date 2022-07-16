@@ -57,3 +57,22 @@ class ReadingData(TimeStampedUUIDModel):
     def __str__(self):
         return f'Reading - {self.id}'
 
+class TemperatureReading(TimeStampedUUIDModel):
+    temperature = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f'Temperature Reading - {self.id}'
+
+class HumidityReading(TimeStampedUUIDModel):
+    humidity = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f'Humidity Reading - {self.id}'
+
+class GasReadingData(TimeStampedUUIDModel):
+    gas = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+    def __str__(self):
+        return f'Gas Reading - {self.id}'
+
