@@ -23,7 +23,7 @@ class LineChartJSONView(BaseLineChartView):
         return [[obj.temperature for obj in ReadingData.objects.all()][:10] ,[obj.humidity for obj in ReadingData.objects.all()][:10] , [obj.gas for obj in ReadingData.objects.all()][:10] ]
 
 
-
+home_page =TemplateView.as_view(template_name="index.html")
 line_chart = TemplateView.as_view(template_name='line_chart.html')
 line_chart_json = LineChartJSONView.as_view()
 
