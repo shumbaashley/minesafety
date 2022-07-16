@@ -1,6 +1,7 @@
-import uuid
 from django.db import models
-from django_extensions.db.models import TimeStampedModel
+
+from utils.models import TimeStampedUUIDModel
+
 class Temperature(models.Model):
     actual = models.DecimalField(decimal_places=2, max_digits=10)
     reference = models.DecimalField(decimal_places=2, max_digits=10)
@@ -47,8 +48,7 @@ class Methane(models.Model):
         return self.actual > self.reference
 
 
-class ReadingData(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+class ReadingData(TimeStampedUUIDModel):
     temperature = models.DecimalField(max_digits=10, decimal_places=2)
     humidity = models.DecimalField(max_digits=10, decimal_places=2)
     gas = models.DecimalField(max_digits=10, decimal_places=2)
