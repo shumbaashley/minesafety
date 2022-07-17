@@ -93,6 +93,10 @@
 
           <script>
             $(document).ready(function () {
+              $("#temperature").text("Loading...");
+                  $("#humidity").text("Loading...");
+                  $("#gas").text("Loading...");
+
               function getCurrentReadings() {
                 $.get('{% url "get_current_readings" %}', function (data) {
                   $("#temperature").text(data.temperature);
