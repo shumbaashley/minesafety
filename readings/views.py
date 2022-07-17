@@ -6,9 +6,10 @@ from rest_framework.views import APIView
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from django_tables2 import SingleTableView
-from .tables import ReadingDataTable
+from .tables import ReadingDataTable, UsersTable
 from django.views.generic import ListView
 from .models import ReadingData
+from users.models import User
 
 
 class LineChartJSONView(BaseLineChartView):
@@ -68,13 +69,12 @@ class GetCurrentReadings(APIView):
 
     
 
-# class ReadingDataListView(ListView):
-#     model = ReadingData
-#     template_name = 'readings/table.html'
-
-
-
 class ReadingDataListView(SingleTableView):
     model = ReadingData
     table_class = ReadingDataTable
     template_name = 'readings/tables-data.html'
+
+class UsersListView(SingleTableView):
+    model = User
+    table_class = UsersTable
+    template_name = 'readings/tables-users.html'
