@@ -56,7 +56,8 @@ class ReadingData(TimeStampedUUIDModel):
 
     class Meta:
         ordering = ['-created']
-
+        verbose_name = "Data Reading"
+        verbose_name_plural = "Data Readings"
 
     def __str__(self):
         return f'Reading - {self.id}'
