@@ -54,6 +54,10 @@ class ReadingData(TimeStampedUUIDModel):
     gas = models.DecimalField(max_digits=10, decimal_places=2)
 
 
+    class Meta:
+        ordering = ['-created']
+
+
     def __str__(self):
         return f'Reading - {self.id}'
 

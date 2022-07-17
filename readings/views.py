@@ -11,7 +11,7 @@ from chartjs.views.lines import BaseLineChartView
 class LineChartJSONView(BaseLineChartView):
     def get_labels(self):
         """Return labels for the x-axis."""
-        return [obj.created.strftime("%H:%M") for obj in ReadingData.objects.all()][:10] 
+        return [obj.created for obj in ReadingData.objects.all()][:10] 
 
     def get_providers(self):
         """Return names of datasets."""
