@@ -1,8 +1,11 @@
 {% extends 'index.html' %}
+{% load render_table from django_tables2 %}
 
   
   {% block title %}
   <title>Table - Mine Monitoring & Safety</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
   {% endblock title %}
 
   {% block content %}
@@ -29,7 +32,7 @@
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <!-- <table class="table datatable">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -76,8 +79,10 @@
                     <td>2011-04-19</td>
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
               <!-- End Table with stripped rows -->
+
+              {% render_table table %}
 
             </div>
           </div>

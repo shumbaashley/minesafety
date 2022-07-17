@@ -77,4 +77,4 @@ class GetCurrentReadings(APIView):
 class ReadingDataListView(SingleTableView):
     model = ReadingData
     table_class = ReadingDataTable
-    template_name = 'readings/table.html'
+    template_name = 'readings/tables-data.html'
