@@ -6,14 +6,15 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    {% block title %}
-
-    {% endblock title %}
+    {% block title %} {% endblock title %}
 
     <meta content="" name="description" />
     <meta content="" name="keywords" />
-    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">  
-
+    <link
+      rel="shortcut icon"
+      href="{% static 'assets/img/favicon.png' %}"
+      type="image/x-icon"
+    />
 
     <!-- Favicons -->
     <link href="{% static 'assets/img/favicon.png' %}" rel="icon" />
@@ -142,6 +143,16 @@
               <li>
                 <a
                   class="dropdown-item d-flex align-items-center"
+                  href="{% url 'admin:index' %}"
+                >
+                  <i class="bi bi-layout-text-window"></i>
+                  <span>Admin Portal</span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
                   href="{% url 'logout' %}"
                 >
                   <i class="bi bi-box-arrow-right"></i>
@@ -182,8 +193,6 @@
             <span>Users</span>
           </a>
         </li>
-
-
 
         <!-- <li class="nav-item">
           <a
