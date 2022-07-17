@@ -1,5 +1,5 @@
 from django.urls import include, path
-from .views import GetCurrentReadings, PostDataReadings
+from .views import GetCurrentReadings, PostDataReadings, ReadingDataListView
 from .views import home_page, line_chart, line_chart_json
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import RedirectView
@@ -12,4 +12,6 @@ urlpatterns = [
     path("dashboard/", login_required(home_page), name="dashboard"),
     path("chart/", line_chart, name="line_chart"),
     path("chartJSON/", line_chart_json, name="line_chart_json"),
+    path("table-readings/", ReadingDataListView.as_view(), name="table-readings")
+
 ]

@@ -5,6 +5,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
+from django_tables2 import SingleTableView
+from .tables import ReadingDataTable
+from django.views.generic import ListView
+from .models import ReadingData
 
 
 class LineChartJSONView(BaseLineChartView):
@@ -61,3 +65,16 @@ class GetCurrentReadings(APIView):
         data = ReadingData.objects.first()
         serializer = ReadingDataSerializer(data)
         return Response(data=serializer.data)
+
+    
+
+# class ReadingDataListView(ListView):
+#     model = ReadingData
+#     template_name = 'readings/table.html'
+
+
+
+class ReadingDataListView(SingleTableView):
+    model = ReadingData
+    table_class = ReadingDataTable
+    template_name = 'readings/table.html'
