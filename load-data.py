@@ -16,7 +16,7 @@ DEV = "http://localhost:8000/api/data-readings/"
 
 def main():
     while True:
-        requests.post(DEV, json=generate_random_data())
+        requests.post(PROD, json=generate_random_data())
         print("Data sent")
         time.sleep(5)
 
