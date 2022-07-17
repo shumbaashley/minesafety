@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'chartjs',
+    'chartjs',
     "django_tables2",
     'widget_tweaks',
     'readings.apps.ReadingsConfig',
