@@ -466,7 +466,7 @@
             <div class="col-12">
               <div class="card">
 
-                <div class="filter">
+                <!-- <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
@@ -477,25 +477,39 @@
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
-                </div>
+                </div> -->
 
                 <div class="card-body">
                   <h5 class="card-title">Reports <span>/Today</span></h5>
 
+
+
+                  <canvas id="myChart" width="500" height="400"></canvas>
+
+                  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+                  <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+                  <script type="text/javascript">
+                      $.get('{% url "line_chart_json" %}', function(data) {
+                          var ctx = $("#myChart").get(0).getContext("2d");
+                          new Chart(ctx, {
+                              type: 'line', data: data
+                          });
+                      });
+                  </script>
                   <!-- Line Chart -->
-                  <div id="reportsChart"></div>
+                  <!-- <div id="reportsChart"></div>
 
                   <script>
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
-                          name: 'Sales',
+                          name: 'Temperature',
                           data: [31, 40, 28, 51, 42, 82, 56],
                         }, {
-                          name: 'Revenue',
+                          name: 'Humidity',
                           data: [11, 32, 45, 32, 34, 52, 41]
                         }, {
-                          name: 'Customers',
+                          name: 'Gas',
                           data: [15, 11, 32, 18, 9, 24, 11]
                         }],
                         chart: {
@@ -536,7 +550,7 @@
                         }
                       }).render();
                     });
-                  </script>
+                  </script> -->
                   <!-- End Line Chart -->
 
                 </div>
