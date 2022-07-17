@@ -2,8 +2,7 @@ from rest_framework import status, viewsets
 from readings.models import GasReading, HumidityReading, ReadingData, TemperatureReading
 from readings.serializers import ReadingDataSerializer
 from rest_framework.response import Response
-
-
+from rest_framework.views import APIView
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 
@@ -57,3 +56,8 @@ class ReadingDataViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class GetCurrentReadings(APIView):
+    def get(self, request, format=None):
+        data = ReadingData.objects.first()
+        serializer = ReadingDataSerializer(data)
+        return Response(data=serializer.data)
