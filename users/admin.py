@@ -8,4 +8,4 @@ admin.site.unregister(Group)
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "username", "date_joined")
+    list_display = ("username", "first_name", "last_name", "date_joined")
