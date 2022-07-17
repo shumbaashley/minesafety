@@ -6,7 +6,6 @@ from django.views.generic.base import RedirectView
 
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='dashboard/'), name='go-to-dashboard'),
     path("api/data-readings/", PostDataReadings.as_view(), name="post_data_readings"),
     path("current-readings/", GetCurrentReadings.as_view(), name="get_current_readings"),
     path("dashboard/", login_required(dashboard_page), name="dashboard"),

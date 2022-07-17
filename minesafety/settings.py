@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'readings.apps.ReadingsConfig',
     'users.apps.UsersConfig',
     'alarms.apps.AlarmsConfig',
+    'landing.apps.LandingConfig',
 ]
 
 MIDDLEWARE = [
