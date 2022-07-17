@@ -13,7 +13,7 @@ def generate_random_data():
 
 def main():
     while True:
-        requests.post("http://localhost:8000/api/", json=generate_random_data())
+        requests.post("http://localhost:8000/api/data-readings/", json=generate_random_data())
         print("Data sent")
         time.sleep(5)
 

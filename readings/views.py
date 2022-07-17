@@ -26,13 +26,13 @@ home_page =TemplateView.as_view(template_name="index.html")
 line_chart = TemplateView.as_view(template_name='line_chart.html')
 line_chart_json = LineChartJSONView.as_view()
 
-class ReadingDataViewSet(viewsets.ModelViewSet):
+class PostDataReadings(APIView):
     queryset = ReadingData.objects.all().order_by('-created')
     serializer_class = ReadingDataSerializer
     permission_classes = []
 
 
-    def create(self, request):
+    def post(self, request, format=None):
         temperature = request.data['temperature']
         humidity = request.data['humidity']
         gas = request.data['gas']
