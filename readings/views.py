@@ -8,11 +8,12 @@ from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from django_tables2 import SingleTableView
 from .tables import ReadingDataTable, UsersTable
-from .models import ReadingData
+from .models import Notepad, ReadingData
 from users.models import User
 from django.shortcuts import render
 from .forms import NotepadForm
 from django.contrib import messages
+from django.views.generic.list import ListView
 
 
 class LineChartJSONView(BaseLineChartView):
@@ -87,3 +88,8 @@ def create_notepad_view(request):
         form = NotepadForm()
 
     return render(request, "readings/create-notepad.html", {"form": form})
+
+class NoteListView(ListView):
+    model = Notepad
+    paginate_by = 12
+    template_name = "readings/list-notes.html"
