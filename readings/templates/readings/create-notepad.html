@@ -10,12 +10,12 @@
 
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Form Layouts</h1>
+    <h1>Create New Note</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Forms</li>
-        <li class="breadcrumb-item active">Layouts</li>
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+        <li class="breadcrumb-item">Notes</li>
+        <li class="breadcrumb-item active">Create New Note</li>
       </ol>
     </nav>
   </div>
@@ -25,7 +25,7 @@
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Create Note</h5>
+            <h5 class="card-title">Create New Note</h5>
 
             {% if messages %}
                 {% for message in messages %}
