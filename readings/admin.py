@@ -1,17 +1,12 @@
 from django.contrib import admin
 
-from .models import ReadingData, Temperature, Methane
-
-# @admin.register(Temperature)
-# class TemperatureAdmin(admin.ModelAdmin):
-#     list_display = ("actual", "reference", "deviation", 'recorded', "alarm")
-
-
-# @admin.register(Methane)
-# class MethaneAdmin(admin.ModelAdmin):
-#     list_display = ("actual", "reference", "deviation", 'recorded', "alarm")
-
+from .models import Notepad, ReadingData
 
 @admin.register(ReadingData)
 class ReadingDataAdmin(admin.ModelAdmin):
     list_display = ("temperature", "humidity", "gas", "created")
+
+
+@admin.register(Notepad)
+class NotepadAdmin(admin.ModelAdmin):
+    list_display = ("title", "note", "created")
