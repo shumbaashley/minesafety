@@ -12,6 +12,7 @@ from .models import ReadingData
 from users.models import User
 from django.shortcuts import render
 from .forms import NotepadForm
+from django.contrib import messages
 
 
 class LineChartJSONView(BaseLineChartView):
@@ -75,7 +76,7 @@ def create_notepad_view(request):
         form = NotepadForm(request.POST)
         if form.is_valid():
             form.save()
-            # assert False
+            messages.success(request, 'Note saved.')
             # return HttpResponseRedirect("/contact?submitted=True")
             return render(
                 request,

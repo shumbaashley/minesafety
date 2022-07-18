@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'readings.apps.ReadingsConfig',
     'users.apps.UsersConfig',
-    'alarms.apps.AlarmsConfig',
     'landing.apps.LandingConfig',
 ]
 
