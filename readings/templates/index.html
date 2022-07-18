@@ -125,7 +125,7 @@
                 class="rounded-circle"
               />
               <span class="d-none d-md-block dropdown-toggle ps-2"
-                >{{ user.get_username|title  }}</span
+                >{{ user.get_username|title }}</span
               > </a
             ><!-- End Profile Iamge Icon -->
 
@@ -173,7 +173,7 @@
     <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'dashboard' %}">
+          <a class="nav-link collapsed" href="{% url 'dashboard' %}">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
@@ -181,19 +181,25 @@
         <!-- End Dashboard Nav -->
 
         <li class="nav-item">
-          <a class="nav-link active" href="{% url 'table-readings' %}">
+          <a class="nav-link collapsed" href="{% url 'table-readings' %}">
             <i class="bi bi-layout-text-window-reverse"></i>
             <span>Readings</span>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" href="{% url 'users' %}">
+          <a class="nav-link collapsed" href="{% url 'users' %}">
             <i class="bi bi-person"></i>
             <span>Users</span>
           </a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'users' %}">
+            <i class="bi bi-card-checklist"></i>
+            <span>Notes</span>
+          </a>
+        </li>
         <!-- <li class="nav-item">
           <a
             class="nav-link collapsed"
