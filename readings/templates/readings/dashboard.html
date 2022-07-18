@@ -209,35 +209,6 @@
       }
     ).render();
 
-    function getChartData() {
-      $.get('{% url "line_chart_json" %}', function (data) {
-        ApexCharts.exec(
-          "temperatureChart",
-          "updateOptions",
-          {
-            xaxis: {
-              categories: data.labels,
-            },
-          }
-        );
-
-        ApexCharts.exec(
-          "temperatureChart",
-          "updateSeries",
-          [
-            {
-              name: "Temperature",
-              data: data.datasets[0].data,
-            },
-          ]
-        );
-      });
-    }
-
-    setInterval(getChartData, 5000);
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
     var humidityChart = new ApexCharts(
       document.querySelector("#humidityChart"),
       {
@@ -285,27 +256,6 @@
       }
     ).render();
 
-    function getChartData() {
-      $.get('{% url "line_chart_json" %}', function (data) {
-        ApexCharts.exec("humidityChart", "updateOptions", {
-          xaxis: {
-            categories: data.labels,
-          },
-        });
-
-        ApexCharts.exec("humidityChart", "updateSeries", [
-          {
-            name: "Humidity",
-            data: data.datasets[1].data,
-          },
-        ]);
-      });
-    }
-
-    setInterval(getChartData, 5000);
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
     var gasChart = new ApexCharts(document.querySelector("#gasChart"), {
       series: [],
       noData: {
@@ -350,8 +300,84 @@
       },
     }).render();
 
+    var combinedChart = new ApexCharts(
+      document.querySelector("#combinedChart"),
+      {
+        series: [],
+        noData: {
+          text: "Loading...",
+        },
+        chart: {
+          id: "combinedChart",
+          height: 350,
+          type: "area",
+          toolbar: {
+            show: false,
+          },
+        },
+        markers: {
+          size: 4,
+        },
+        colors: ["#4154f1", "#2eca6a", "#ff771d"],
+        fill: {
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.3,
+            opacityTo: 0.4,
+            stops: [0, 90, 100],
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: "smooth",
+          width: 2,
+        },
+        xaxis: {
+          type: "datetime",
+          categories: [],
+        },
+        tooltip: {
+          x: {
+            format: "dd/MM/yy HH:mm",
+          },
+        },
+      }
+    ).render();
+
     function getChartData() {
       $.get('{% url "line_chart_json" %}', function (data) {
+        // Update Temperature Chart
+        ApexCharts.exec("temperatureChart", "updateOptions", {
+          xaxis: {
+            categories: data.labels,
+          },
+        });
+
+        ApexCharts.exec("temperatureChart", "updateSeries", [
+          {
+            name: "Temperature",
+            data: data.datasets[0].data,
+          },
+        ]);
+        // Update Humidity Chart
+        ApexCharts.exec("humidityChart", "updateOptions", {
+          xaxis: {
+            categories: data.labels,
+          },
+        });
+
+        ApexCharts.exec("humidityChart", "updateSeries", [
+          {
+            name: "Humidity",
+            data: data.datasets[1].data,
+          },
+        ]);
+
+        // Update Gas Chart
+
         ApexCharts.exec("gasChart", "updateOptions", {
           xaxis: {
             categories: data.labels,
@@ -364,59 +390,8 @@
             data: data.datasets[2].data,
           },
         ]);
-      });
-    }
 
-    setInterval(getChartData, 5000);
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    var chart = new ApexCharts(document.querySelector("#combinedChart"), {
-      series: [],
-      noData: {
-        text: "Loading...",
-      },
-      chart: {
-        id: "combinedChart",
-        height: 350,
-        type: "area",
-        toolbar: {
-          show: false,
-        },
-      },
-      markers: {
-        size: 4,
-      },
-      colors: ["#4154f1", "#2eca6a", "#ff771d"],
-      fill: {
-        type: "gradient",
-        gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.3,
-          opacityTo: 0.4,
-          stops: [0, 90, 100],
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: "smooth",
-        width: 2,
-      },
-      xaxis: {
-        type: "datetime",
-        categories: [],
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm",
-        },
-      },
-    }).render();
-
-    function getChartData() {
-      $.get('{% url "line_chart_json" %}', function (data) {
+        // Update Combined Chart
         ApexCharts.exec("combinedChart", "updateOptions", {
           xaxis: {
             categories: data.labels,
