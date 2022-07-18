@@ -94,8 +94,8 @@
           <script>
             $(document).ready(function () {
               $("#temperature").text("Loading...");
-                  $("#humidity").text("Loading...");
-                  $("#gas").text("Loading...");
+              $("#humidity").text("Loading...");
+              $("#gas").text("Loading...");
 
               function getCurrentReadings() {
                 $.get('{% url "get_current_readings" %}', function (data) {
@@ -109,6 +109,258 @@
             });
           </script>
           <!-- End Customers Card -->
+
+          <div class="col-lg-12">
+            <div class="row">
+              <!-- Temperature Chart -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Temperature</h5>
+                    <div id="temperatureChart"></div>
+
+                    <script>
+                      document.addEventListener("DOMContentLoaded", () => {
+                        var chart = new ApexCharts(
+                          document.querySelector("#temperatureChart"),
+                          {
+                            series: [],
+                            noData: {
+                              text: "Loading...",
+                            },
+                            chart: {
+                              id: "temperatureChart",
+                              height: 350,
+                              type: "area",
+                              toolbar: {
+                                show: false,
+                              },
+                            },
+                            markers: {
+                              size: 4,
+                            },
+                            colors: ["#4154f1"],
+                            fill: {
+                              type: "gradient",
+                              gradient: {
+                                shadeIntensity: 1,
+                                opacityFrom: 0.3,
+                                opacityTo: 0.4,
+                                stops: [0, 90, 100],
+                              },
+                            },
+                            dataLabels: {
+                              enabled: false,
+                            },
+                            stroke: {
+                              curve: "smooth",
+                              width: 2,
+                            },
+                            xaxis: {
+                              type: "datetime",
+                              categories: [],
+                            },
+                            tooltip: {
+                              x: {
+                                format: "dd/MM/yy HH:mm",
+                              },
+                            },
+                          }
+                        ).render();
+
+                        function getChartData() {
+                          $.get('{% url "line_chart_json" %}', function (data) {
+                            ApexCharts.exec(
+                              "temperatureChart",
+                              "updateOptions",
+                              {
+                                xaxis: {
+                                  categories: data.labels,
+                                },
+                              }
+                            );
+
+                            ApexCharts.exec(
+                              "temperatureChart",
+                              "updateSeries",
+                              [
+                                {
+                                  name: "Temperature",
+                                  data: data.datasets[0].data,
+                                },
+                              ]
+                            );
+                          });
+                        }
+
+                        setInterval(getChartData, 5000);
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Humidity Chart -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Humidity</h5>
+                    <div id="humidityChart"></div>
+
+                    <script>
+                      document.addEventListener("DOMContentLoaded", () => {
+                        var chart = new ApexCharts(
+                          document.querySelector("#humidityChart"),
+                          {
+                            series: [],
+                            noData: {
+                              text: "Loading...",
+                            },
+                            chart: {
+                              id: "humidityChart",
+                              height: 350,
+                              type: "area",
+                              toolbar: {
+                                show: false,
+                              },
+                            },
+                            markers: {
+                              size: 4,
+                            },
+                            colors: ["#2eca6a"],
+                            fill: {
+                              type: "gradient",
+                              gradient: {
+                                shadeIntensity: 1,
+                                opacityFrom: 0.3,
+                                opacityTo: 0.4,
+                                stops: [0, 90, 100],
+                              },
+                            },
+                            dataLabels: {
+                              enabled: false,
+                            },
+                            stroke: {
+                              curve: "smooth",
+                              width: 2,
+                            },
+                            xaxis: {
+                              type: "datetime",
+                              categories: [],
+                            },
+                            tooltip: {
+                              x: {
+                                format: "dd/MM/yy HH:mm",
+                              },
+                            },
+                          }
+                        ).render();
+
+                        function getChartData() {
+                          $.get('{% url "line_chart_json" %}', function (data) {
+                            ApexCharts.exec("humidityChart", "updateOptions", {
+                              xaxis: {
+                                categories: data.labels,
+                              },
+                            });
+
+                            ApexCharts.exec("humidityChart", "updateSeries", [
+                              {
+                                name: "Humidity",
+                                data: data.datasets[1].data,
+                              },
+                            ]);
+                          });
+                        }
+
+                        setInterval(getChartData, 5000);
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gas Chart -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Gas</h5>
+                    <div id="gasChart"></div>
+
+                    <script>
+                      document.addEventListener("DOMContentLoaded", () => {
+                        var chart = new ApexCharts(
+                          document.querySelector("#gasChart"),
+                          {
+                            series: [],
+                            noData: {
+                              text: "Loading...",
+                            },
+                            chart: {
+                              id: "gasChart",
+                              height: 350,
+                              type: "area",
+                              toolbar: {
+                                show: false,
+                              },
+                            },
+                            markers: {
+                              size: 4,
+                            },
+                            colors: ["#ff771d"],
+                            fill: {
+                              type: "gradient",
+                              gradient: {
+                                shadeIntensity: 1,
+                                opacityFrom: 0.3,
+                                opacityTo: 0.4,
+                                stops: [0, 90, 100],
+                              },
+                            },
+                            dataLabels: {
+                              enabled: false,
+                            },
+                            stroke: {
+                              curve: "smooth",
+                              width: 2,
+                            },
+                            xaxis: {
+                              type: "datetime",
+                              categories: [],
+                            },
+                            tooltip: {
+                              x: {
+                                format: "dd/MM/yy HH:mm",
+                              },
+                            },
+                          }
+                        ).render();
+
+                        function getChartData() {
+                          $.get('{% url "line_chart_json" %}', function (data) {
+                            ApexCharts.exec("gasChart", "updateOptions", {
+                              xaxis: {
+                                categories: data.labels,
+                              },
+                            });
+
+                            ApexCharts.exec("gasChart", "updateSeries", [
+                              {
+                                name: "Gas",
+                                data: data.datasets[2].data,
+                              },
+                            ]);
+                          });
+                        }
+
+                        setInterval(getChartData, 5000);
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Reports -->
           <div class="col-12">
@@ -127,7 +379,7 @@
                 </div> -->
 
               <div class="card-body">
-                <h5 class="card-title">Data Readings <span>|Now</span></h5>
+                <h5 class="card-title">Data Readings</h5>
 
                 <!-- <canvas id="myChart" width="500" height="400"></canvas> 
 
@@ -229,7 +481,6 @@
                   });
                 </script>
                 <!-- End Line Chart -->
-
               </div>
             </div>
           </div>
