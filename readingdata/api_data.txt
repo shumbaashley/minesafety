@@ -1,1 +1,0 @@
-{"temperature": "21.6", "humidity": "80", "gas": "245"}
