@@ -86,7 +86,7 @@
               <div class="col-xxl-4 col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Temperature</h5>
+                    <h5 class="card-title">Temperature (&#8451;)</h5>
                     <div id="temperatureChart"></div>
                   </div>
                 </div>
@@ -96,7 +96,7 @@
               <div class="col-xxl-4 col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Humidity</h5>
+                    <h5 class="card-title">Humidity (&#37;)</h5>
                     <div id="humidityChart"></div>
                   </div>
                 </div>
@@ -402,7 +402,7 @@
 
         ApexCharts.exec("temperatureChart", "updateSeries", [
           {
-            name: "Temperature",
+            name: "Temperature (&#8451;)",
             data: data.datasets[0].data,
           },
         ]);
@@ -415,7 +415,7 @@
 
         ApexCharts.exec("humidityChart", "updateSeries", [
           {
-            name: "Humidity",
+            name: "Humidity (&#37;)",
             data: data.datasets[1].data,
           },
         ]);
@@ -444,11 +444,11 @@
 
         ApexCharts.exec("combinedChart", "updateSeries", [
           {
-            name: "Temperature",
+            name: "Temperature (&#8451;)",
             data: data.datasets[0].data,
           },
           {
-            name: "Humidity",
+            name: "Humidity (&#37;)",
             data: data.datasets[1].data,
           },
           {
