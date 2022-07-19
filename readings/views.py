@@ -1,4 +1,5 @@
 from django.http import HttpResponseRedirect
+from django.urls import reverse
 from rest_framework import status, viewsets
 from readings.models import ReadingData
 from readings.serializers import ReadingDataSerializer
@@ -78,12 +79,7 @@ def create_notepad_view(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Note saved.')
-            # return HttpResponseRedirect("/contact?submitted=True")
-            return render(
-                request,
-                "readings/create-notepad.html",
-                {"form": form},
-            )
+            return HttpResponseRedirect(reverse('note-list'))
     else:
         form = NotepadForm()
 

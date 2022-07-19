@@ -19,9 +19,12 @@ urlpatterns = [
     path("dashboard/", login_required(dashboard_page), name="dashboard"),
     path("chart/", line_chart, name="line_chart"),
     path("chartJSON/", line_chart_json, name="line_chart_json"),
-    path("table-readings/", ReadingDataListView.as_view(), name="table-readings"),
-    path("users/", UsersListView.as_view(), name="users"),
-    path('notes/', NoteListView.as_view(), name='note-list'),
+    path(
+        "table-readings/",
+        login_required(ReadingDataListView.as_view()),
+        name="table-readings",
+    ),
+    path("users/", login_required(UsersListView.as_view()), name="users"),
+    path("notes/", login_required(NoteListView.as_view()), name="note-list"),
     path("notes/new/", login_required(create_notepad_view), name="create-note"),
-
 ]
