@@ -24,7 +24,7 @@
           <div class="col-xxl-4 col-md-6">
             <div class="card info-card sales-card" id="tempCard">
               <div class="card-body">
-                <h5 class="card-title">Temperature</h5>
+                <h5 class="card-title">Temperature (&#8451;)</h5>
 
                 <div class="d-flex align-items-center">
                   <div
@@ -34,7 +34,7 @@
                   </div>
                   <div class="ps-3">
                     <h6 id="temperature"></h6>
-                    <span id="tempText" class="text-muted small pt-2 ps-1"></span>
+                    <span id="tempText" class="text-light small pt-2 ps-1"></span>
                   </div>
                 </div>
               </div>
@@ -43,7 +43,7 @@
           <div class="col-xxl-4 col-md-6">
             <div class="card info-card revenue-card" id="humCard">
               <div class="card-body">
-                <h5 class="card-title">Humidity</h5>
+                <h5 class="card-title">Humidity (&#37;)</h5>
 
                 <div class="d-flex align-items-center">
                   <div
@@ -53,7 +53,7 @@
                   </div>
                   <div class="ps-3">
                     <h6 id="humidity"></h6>
-                    <span id="humText" class="text-muted small pt-2 ps-1"></span>
+                    <span id="humText" class="text-light small pt-2 ps-1"></span>
                   </div>
                 </div>
               </div>
@@ -73,7 +73,7 @@
                   </div>
                   <div class="ps-3">
                     <h6 id="gas"></h6>
-                    <span id="gasText" class="text-muted small pt-2 ps-1"></span>
+                    <span id="gasText" class="text-light small pt-2 ps-1"></span>
                   </div>
                 </div>
               </div>
@@ -169,34 +169,34 @@
 
         if(temperature > maxTemp){
           $("#tempCard").addClass("bg-danger");
-          $("#tempText").text(`Above ${maxTemp}`);
+          $("#tempText").text(`Alert: Above ${maxTemp}`);
 
         }
 
         if(temperature < minTemp){
           $("#tempCard").addClass("bg-info");
-          $("#tempText").text(`Below ${minTemp}`);
+          $("#tempText").text(`Alert: Below ${minTemp}`);
         }
 
         if(humidity > maxHum){
           $("#humCard").addClass("bg-danger");
-          $("#humText").text(`Above ${maxHum}`);
+          $("#humText").text(`Alert: Above ${maxHum}`);
 
         }
 
         if(humidity < minHum){
           $("#humCard").addClass("bg-info");
-          $("#humText").text(`Below ${minHum}`);
+          $("#humText").text(`Alert: Below ${minHum}`);
         }
 
         if(gas > maxGasLevel){
           $("#gasCard").addClass("bg-danger");
-          $("#gasText").text(`Above ${maxGasLevel}`);
+          $("#gasText").text(`Alert: Above ${maxGasLevel}`);
 
         }
         if(gas < minGasLevel){
           $("#gasCard").addClass("bg-info");
-          $("#gasText").text(`Below ${minGasLevel}`);
+          $("#gasText").text(`Alert: Below ${minGasLevel}`);
         }
 
         $("#temperature").text(temperature);
