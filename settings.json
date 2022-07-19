@@ -3,12 +3,12 @@
     "model": "readings.thresholdsettings",
     "pk": 1,
     "fields": {
-      "minimum_temperature": "12.00",
-      "maximum_temperature": "30.00",
-      "minimum_humidity": "30.00",
+      "minimum_temperature": "5.00",
+      "maximum_temperature": "40.00",
+      "minimum_humidity": "20.00",
       "maximum_humidity": "70.00",
-      "minimum_gas_level": "30.00",
-      "maximum_gas_level": "80.00"
+      "minimum_gas_level": "0.00",
+      "maximum_gas_level": "300.00"
     }
   }
 ]
