@@ -63,7 +63,7 @@
           <div class="col-xxl-4 col-xl-12">
             <div class="card info-card customers-card" id="gasCard">
               <div class="card-body">
-                <h5 class="card-title">Gas</h5>
+                <h5 class="card-title">Gas (ppm)</h5>
 
                 <div class="d-flex align-items-center">
                   <div
@@ -102,11 +102,11 @@
                 </div>
               </div>
 
-              <!-- Gas Chart -->
+              <!-- Gas (ppm) Chart -->
               <div class="col-xxl-4 col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Gas</h5>
+                    <h5 class="card-title">Gas (ppm)</h5>
                     <div id="gasChart"></div>
                   </div>
                 </div>
@@ -430,7 +430,7 @@
 
         ApexCharts.exec("gasChart", "updateSeries", [
           {
-            name: "Gas",
+            name: "Gas (ppm)",
             data: data.datasets[2].data,
           },
         ]);
@@ -452,7 +452,7 @@
             data: data.datasets[1].data,
           },
           {
-            name: "Gas",
+            name: "Gas (ppm)",
             data: data.datasets[2].data,
           },
         ]);
