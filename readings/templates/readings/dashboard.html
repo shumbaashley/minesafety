@@ -135,15 +135,43 @@
 
     function getCurrentReadings() {
       $.get('{% url "get_current_readings" %}', function (data) {
-        var temperature = data.temperature;
-        var humidity = data.humidity;
-        var gas = data.gas;
+        const { temperature, humidity, gas} = data;
 
-        // console.log(threshold_settings.minimum_temperature);
+        const minTemp = {{threshold_settings.minimum_temperature}};
+        const maxTemp = {{threshold_settings.maximum_temperature}};
+        const minHum = {{threshold_settings.minimum_humidity}};
+        const maxHum = {{threshold_settings.maximum_humidity}};
+        const minGasLevel = {{threshold_settings.minimum_gas_level}};
+        const maxGasLevel = {{threshold_settings.maximum_gas_level}};
 
-        $("#tempCard").addClass("bg-danger");
+        
 
-        $("#tempCard").removeClass("bg-danger");
+        if(temperature > maxTemp){
+          $("#tempCard").addClass("bg-danger");
+        }else if(temperature < minTemp){
+          $("#tempCard").addClass("bg-info");
+        }else{
+          $("#tempCard").removeClass("bg-danger");
+          $("#tempCard").removeClass("bg-info");
+        }
+
+        if(humidity > maxHum){
+          $("#humCard").addClass("bg-danger");
+        }else if(humidity < minHum){
+          $("#humCard").addClass("bg-info");
+        }else{
+          $("#humCard").removeClass("bg-danger");
+          $("#humCard").removeClass("bg-info");
+        }
+
+        if(gas > maxGasLevel){
+          $("#gasCard").addClass("bg-danger");
+        }else if(gas < minGasLevel){
+          $("#gasCard").addClass("bg-info");
+        }else{
+          $("#gasCard").removeClass("bg-danger");
+          $("#gasCard").removeClass("bg-info");
+        }
 
         $("#temperature").text(temperature);
         $("#humidity").text(humidity);

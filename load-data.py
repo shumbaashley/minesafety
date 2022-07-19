@@ -5,9 +5,9 @@ import requests
 
 def generate_random_data():
     return {
-        "temperature": random.randint(13, 24),
-        "humidity": random.randint(90, 99),
-        "gas": random.randint(5, 95),
+        "temperature": random.randint(5, 40),
+        "humidity": random.randint(0, 99),
+        "gas": random.randint(0, 99),
     }
 
 
