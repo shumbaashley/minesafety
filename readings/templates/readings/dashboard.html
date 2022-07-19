@@ -34,6 +34,7 @@
                   </div>
                   <div class="ps-3">
                     <h6 id="temperature"></h6>
+                    <span id="tempText" class="text-muted small pt-2 ps-1"></span>
                   </div>
                 </div>
               </div>
@@ -52,6 +53,7 @@
                   </div>
                   <div class="ps-3">
                     <h6 id="humidity"></h6>
+                    <span id="humText" class="text-muted small pt-2 ps-1"></span>
                   </div>
                 </div>
               </div>
@@ -71,6 +73,7 @@
                   </div>
                   <div class="ps-3">
                     <h6 id="gas"></h6>
+                    <span id="gasText" class="text-muted small pt-2 ps-1"></span>
                   </div>
                 </div>
               </div>
@@ -143,6 +146,11 @@
 
       $("#gasCard").removeClass("bg-danger");
       $("#gasCard").removeClass("bg-info");
+
+      $("#tempText").text('');
+      $("#humText").text('');
+      $("#gasText").text('');
+
     }
 
 
@@ -158,32 +166,43 @@
         const maxGasLevel = {{threshold_settings.maximum_gas_level}};
 
         removeAllAppliedClasses()
-        
+
         if(temperature > maxTemp){
           $("#tempCard").addClass("bg-danger");
+          $("#tempText").text(`Above ${maxTemp}`);
+
         }
 
         if(temperature < minTemp){
           $("#tempCard").addClass("bg-info");
+          $("#tempText").text(`Below ${minTemp}`);
         }
 
         if(humidity > maxHum){
           $("#humCard").addClass("bg-danger");
+          $("#humText").text(`Above ${maxHum}`);
+
         }
+
         if(humidity < minHum){
           $("#humCard").addClass("bg-info");
+          $("#humText").text(`Below ${minHum}`);
         }
 
         if(gas > maxGasLevel){
           $("#gasCard").addClass("bg-danger");
+          $("#gasText").text(`Above ${maxGasLevel}`);
+
         }
         if(gas < minGasLevel){
           $("#gasCard").addClass("bg-info");
+          $("#gasText").text(`Below ${minGasLevel}`);
         }
 
         $("#temperature").text(temperature);
         $("#humidity").text(humidity);
         $("#gas").text(gas);
+
       });
     }
 
