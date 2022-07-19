@@ -1,22 +1,8 @@
 from django.db import models
 
-from utils.models import TimeStampedUUIDModel
+from utils.models import SingletonBaseModel, TimeStampedUUIDModel
 
-class SingletonBaseModel(models.Model):
-    class Meta:
-        abstract = True
 
-    def save(self, *args, **kwargs):
-        self.pk = 1
-        super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        pass
-
-    @classmethod
-    def load(cls):
-        obj, created = cls.objects.get_or_create(pk=1)
-        return obj
     
 class ThresholdSettings(SingletonBaseModel):
     minimum_temperature = models.DecimalField(max_digits=10, decimal_places=2)
