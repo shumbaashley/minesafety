@@ -22,7 +22,7 @@
   <!-- End Page Title -->
   <section class="section">
     <div class="row">
-      <div class="col-lg-6">
+      <div class="offset-lg-3 col-lg-6">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Create New Note</h5>
@@ -47,7 +47,7 @@
               <div class="col-12">
                 <div class="form-floating">
                   {% render_field form.note class+="form-control"   placeholder=form.note.label %}
-                  <!-- <label for="floatingTextarea">{{form.note.label}}</label> -->
+                  <label for="floatingTextarea">{{form.note.label}}</label>
                 </div>
               </div>
               <div class="text-center">
