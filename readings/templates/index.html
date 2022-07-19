@@ -134,7 +134,12 @@
             >
               <li class="dropdown-header">
                 <h6>{{ user.get_full_name }}</h6>
-                <span>System User</span>
+                {% if user.is_staff %}
+                <span>Admin User</span>
+                {% else %}
+                <span>Regular User</span>
+                {% endif %}
+
               </li>
               <li>
                 <hr class="dropdown-divider" />
