@@ -53,6 +53,24 @@
       {% for note in object_list %}
       <div class="col-lg-4">
         <div class="card">
+          <div class="card-header">
+            {% if note.note_type == "Hazard" %}
+            <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Hazard</span>
+            {% endif %}
+
+            {% if note.note_type == "General" %}
+            <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> General</span>
+            {% endif %}
+
+            {% if note.note_type == "Near-miss" %}
+            <span class="badge bg-secondary"><i class="bi bi-collection me-1"></i> Near-miss</span>
+            {% endif %}
+
+            {% if note.note_type == "Accident" %}
+            <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Accident</span>
+            {% endif %}
+
+          </div>
           <div class="card-body">
             <h5 class="card-title">{{note.title}}</h5>
             {{note.note}}
