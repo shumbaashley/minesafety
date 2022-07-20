@@ -31,14 +31,20 @@
               {% csrf_token %}
               <div class="col-md-12">
                 <div class="form-floating">
+                  {% render_field form.note_type class+="form-control"  placeholder=form.note_type.label %}
+                  <label for="id_note_type">{{form.note_type.label}}</label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-floating">
                   {% render_field form.title class+="form-control"  placeholder=form.title.label %}
-                  <label for="floatingName">{{form.title.label}}</label>
+                  <label for="id_title">{{form.title.label}}</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
                   {% render_field form.note class+="form-control"   placeholder=form.note.label %}
-                  <label for="floatingTextarea">{{form.note.label}}</label>
+                  <label for="id_note">{{form.note.label}}</label>
                 </div>
               </div>
               <div class="text-center">

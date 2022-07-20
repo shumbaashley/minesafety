@@ -3,7 +3,6 @@ from django.db import models
 from utils.models import SingletonBaseModel, TimeStampedUUIDModel
 
 
-    
 class ThresholdSettings(SingletonBaseModel):
     minimum_temperature = models.DecimalField(max_digits=10, decimal_places=2)
     maximum_temperature = models.DecimalField(max_digits=10, decimal_places=2)
@@ -17,32 +16,38 @@ class ThresholdSettings(SingletonBaseModel):
         verbose_name_plural = "Base Settings"
 
     def __str__(self):
-        return f'Base Settings'
+        return f"Base Settings"
+
 
 class ReadingData(TimeStampedUUIDModel):
     temperature = models.DecimalField(max_digits=10, decimal_places=2)
     humidity = models.DecimalField(max_digits=10, decimal_places=2)
     gas = models.DecimalField(max_digits=10, decimal_places=2)
 
-
     class Meta:
-        ordering = ['-created']
+        ordering = ["-created"]
         verbose_name = "Data Reading"
         verbose_name_plural = "Data Readings"
 
     def __str__(self):
-        return f'Reading - {self.id}'
+        return f"Reading - {self.id}"
 
 
 class Notepad(TimeStampedUUIDModel):
+    NOTE_TYPE = [
+        ("Accident", "Accident"),
+        ("Near-miss", "Near-miss"),
+        ("Hazard", "Hazard"),
+        ("General", "General"),
+    ]
+    note_type = models.CharField(max_length=20, choices=NOTE_TYPE, default="General")
     title = models.CharField(max_length=200)
     note = models.TextField(max_length=1000)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ["-created"]
         verbose_name = "Note"
         verbose_name_plural = "Notes"
 
     def __str__(self):
-        return f'Note - {self.id}'
-
+        return f"Note - {self.id}"

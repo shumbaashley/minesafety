@@ -8,6 +8,7 @@ class NotepadForm(ModelForm):
         fields = [
             "title",
             "note",
+            "note_type"
         ]
         widgets = {
             'note': Textarea(attrs={'cols': 80, 'rows': 20}),
