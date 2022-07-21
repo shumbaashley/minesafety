@@ -55,21 +55,22 @@
         <div class="card">
           <div class="card-header">
             {% if note.note_type == "Hazard" %}
-            <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> Hazard</span>
+            <span class="badge bg-warning text-dark"
+              ><i class="bi bi-exclamation-triangle me-1"></i> Hazard</span
+            >
+            {% endif %} {% if note.note_type == "General" %}
+            <span class="badge bg-info text-dark"
+              ><i class="bi bi-info-circle me-1"></i> General</span
+            >
+            {% endif %} {% if note.note_type == "Near-miss" %}
+            <span class="badge bg-secondary"
+              ><i class="bi bi-collection me-1"></i> Near-miss</span
+            >
+            {% endif %} {% if note.note_type == "Accident" %}
+            <span class="badge bg-danger"
+              ><i class="bi bi-exclamation-octagon me-1"></i> Accident</span
+            >
             {% endif %}
-
-            {% if note.note_type == "General" %}
-            <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> General</span>
-            {% endif %}
-
-            {% if note.note_type == "Near-miss" %}
-            <span class="badge bg-secondary"><i class="bi bi-collection me-1"></i> Near-miss</span>
-            {% endif %}
-
-            {% if note.note_type == "Accident" %}
-            <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Accident</span>
-            {% endif %}
-
           </div>
           <div class="card-body">
             <h5 class="card-title">{{note.title}}</h5>
@@ -83,7 +84,32 @@
       {% empty %}
       <p>Your notes will appear here.</p>
 
-      {% endfor %}
+      {% endfor %} 
+      
+      {% if is_paginated %}
+      <nav aria-label="Notes navigation">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
+        {% else %}
+          <!-- <li class="page-item disabled"><span class="page-link">&laquo; previous</span></li> -->
+        {% endif %}
+        {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="page-item active"><span class="page-link">{{ i }} </span></span></li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li  class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next &raquo;</a></li>
+        {% else %}
+          <!-- <li  class="page-item disabled"><span class="page-link">next &raquo;</span></li> -->
+        {% endif %}
+      </ul>
+    </nav>
+
+    {% endif %}
     </div>
   </section>
 </main>

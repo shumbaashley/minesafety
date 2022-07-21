@@ -87,5 +87,7 @@ def create_notepad_view(request):
 
 class NoteListView(ListView):
     model = Notepad
-    paginate_by = 12
+    paginate_by = 6
     template_name = "readings/list-notes.html"
+    queryset = Notepad.objects.all()  
+    notes = 'users'  
